@@ -1,0 +1,22 @@
+#!/bin/bash
+
+for file in *
+do
+    lines=$(wc -l < $file)
+    echo $lines
+    new_lines=$(($lines - 2))
+    echo $new_lines
+    tail -$new_lines $file > $file.tmp
+    echo "%nprocshared=16
+%chk=$file.chk
+#p HF/6-31G* SCF=Tight Pop=MK IOp(6/33=2,6/41=10,6/42=17)
+
+MYHF HF ESP HEN
+
+0   1" > $file.hf.in
+    cat $file.tmp >> $file.hf.in
+    echo "
+
+" >> $file.hf.in
+    rm $file.tmp
+done

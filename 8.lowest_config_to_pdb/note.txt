@@ -1,0 +1,1 @@
+Use your favourite molecule converter to convert the lowest energy structure to pdb. I use obabel!!!

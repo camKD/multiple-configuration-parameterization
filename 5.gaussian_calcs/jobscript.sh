@@ -1,0 +1,50 @@
+#!/bin/bash -l
+
+### For MPI jobs.
+### To use two nodes, with one task per node
+#SBATCH -n 16
+#SBATCH --nodes=1
+
+#SBATCH --mail-type=END,FAIL,TIME_LIMIT_80,TIME_LIMIT_50
+
+### Which queue or partition to use
+#SBATCH -p cpu
+
+### Slurm does not support using variables in the #SBATCH section, so we need to set the job name in the submit command if we want to run loops.
+### #SBATCH --job-name=EPCTCNC12
+### Acceptable time formats include "minutes", "minutes:seconds", "hours:minutes:seconds", "days-hours", "days-hours:minutes" and "days-hours:minutes:seconds"
+
+#SBATCH --time=10
+
+# Insert here your project name and uncomment
+
+module load gaussian_sse4_kcl
+
+### molname=EPCTCN
+#job=opt
+### config=12
+
+INPUT=$jobname
+
+### INPUT="$molname"C$config.$job.in 
+
+echo $INPUT
+export MKL_NUM_THREADS=$NSLOTS
+
+export NUMEXPR_NUM_THREADS=$NSLOTS
+
+export OMP_NUM_THREADS=$NSLOTS
+
+# You should not need to modify below
+
+###  -V -CHECK THE SECOND LINK ABOVE
+#SBATCH --export=all
+
+### This is default in Slurm
+### $ -cwd
+
+#Put your username
+
+#Execution Line
+
+g16 $INPUT > $INPUT.log
