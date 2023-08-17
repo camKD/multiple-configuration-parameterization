@@ -23,5 +23,3 @@ This project relies on Gaussian 16 for certain calculations. Please ensure that 
   - GFN1-xTB: S. Grimme, C. Bannwarth, P. Shushkov, JCTC, 2017, 13, 1989-2009. DOI: 10.1021/acs.jctc.7b00118
 - **License**: GNU Lesser General Public License, version 3 or later.
 - **Website**: [https://xtb-docs.readthedocs.io/en/latest/]
-
-- 
